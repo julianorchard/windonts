@@ -4,13 +4,18 @@
 
 # Copyright (c) 2022   Julian Orchard <jorchard@pm.me>
 
+## Description:
+
+# For tidying files after they've been mauled by Windows Explorer bulk renaming,
+# e.g. "File (1).ext", ...
+
+# Disclaimer, this is the first and only Ruby I've ever written
+
 ## License:
 
 # See /LICENSE file in the root of this repository.
 
 ## Code:
-
-# Disclaimer, this is the first and only Ruby I've ever written
 
 def usage
   puts
