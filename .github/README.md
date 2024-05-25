@@ -37,6 +37,10 @@ The main use case for this being whenever we change Git profiles. This isn't som
 
 Use this script to create a shortcut to the current folder you're in. I've found this especially useful for CMD navigation.
 
+### tidy <sup>[file](/.bin/tidy)</sup>
+
+For tidying files after they've been mauled by Windows Explorer bulk renaming, e.g. "File (1).ext", ... Disclaimer, this is the first and only Ruby I've ever written
+
 ## License
 
 [MTI](/LICENSE).
