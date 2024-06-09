@@ -1,4 +1,4 @@
 
 ## License
 
-[MTI](/LICENSE).
+[MIT](/LICENSE).
