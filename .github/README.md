@@ -2,7 +2,7 @@
 
 These used to live alongside my main
 [Dotfiles](https://github.com/julianorchard/dotfiles), but I don't use Windows
-enough to need them in there anymore.
+enough, as a desktop, to need it in the same repo.
 
 ## Scripts
 
@@ -43,4 +43,4 @@ For tidying files after they've been mauled by Windows Explorer bulk renaming, e
 
 ## License
 
-[MTI](/LICENSE).
+[MIT](/LICENSE).
