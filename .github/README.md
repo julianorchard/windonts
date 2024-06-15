@@ -59,7 +59,7 @@ I have a number of fun and useful AutoHotkey settings (requires version v2.0).
 | `Win + Enter` | Run PowersHell | [general.ahk](autohotkey/general.ahk)  |
 | `Win + Alt + Enter` | Run Git Bash (how many of these do we need??) | [general.ahk](autohotkey/general.ahk)  |
 | `Alt + F` | Run Firefox | [general.ahk](autohotkey/general.ahk)  |
-| `Alt + c` | Get AutoHotkey `MouseMove | X | Y` positions to the clipboard (very useful for creating quick and dirty AHK scripts) | [general.ahk](autohotkey/general.ahk)  |
+| `Alt + c` | Get AutoHotkey `MouseMove X Y` positions to the clipboard (very useful for creating quick and dirty AHK scripts) | [general.ahk](autohotkey/general.ahk)  |
 | `PrintScreen` | Snipping tool | [general.ahk](autohotkey/general.ahk)  |
 | `Alt + u` | Draw a line between the next two mouse clicks (U for Underline!) | [general.ahk](autohotkey/general.ahk)  |
 | `Alt + b` | Draw a box between the next two mouse clicks (B for Box!!) | [general.ahk](autohotkey/general.ahk)  |

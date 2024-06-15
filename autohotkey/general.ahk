@@ -4,17 +4,17 @@ DetectHiddenWindows true
 ; Home Path
 global UserHome := "C:\Users\" A_UserName
 
-; AHK: `Alt + Spacebar`, Toggles a windows "Always on top" status
+; AHK: `Alt + Spacebar`; Toggles a windows "Always on top" status
 ^SPACE::WinsetAlwaysOnTop -1, WinGetTitle("A")
 
-; AHK: `Volume_Up`/`Volume_Down`, Play a sound when volume up/down keys played
+; AHK: `Volume_Up`/`Volume_Down`; Play a sound when volume up/down keys played
 ~Volume_Up::
 ~Volume_Down::SoundPlay("C:\Windows\Media\Windows Background.wav")
 
-; AHK: `Alt + q`, Kill the current window
+; AHK: `Alt + q`; Kill the current window
 !q::WinKill(WinGetTitle("A"))
 
-; AHK: `Alt + Enter`, Run my custom [`cmdrc.bat`](scripts/cmdrc.bat) file
+; AHK: `Alt + Enter`; Run my custom [`cmdrc.bat`](scripts/cmdrc.bat) file
 $!Enter::
 {
   if not WinActive("ahk_exe EXCEL.EXE")
@@ -27,23 +27,23 @@ $!Enter::
   }
 }
 
-; AHK: `Win + Enter`, Run PowersHell
+; AHK: `Win + Enter`; Run PowersHell
 #Enter::Run("C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe")
 
-; AHK: `Win + Alt + Enter`, Run Git Bash (how many of these do we need??)
+; AHK: `Win + Alt + Enter`; Run Git Bash (how many of these do we need??)
 #!Enter::Run("C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Git\Git Bash")
 
-; AHK: `Alt + F`, Run Firefox
+; AHK: `Alt + F`; Run Firefox
 !f::Run("C:\Program Files\Mozilla Firefox\firefox.exe")
 
-; AHK: `Alt + c`, Get AutoHotkey `MouseMove, X, Y` positions to the clipboard (very useful for creating quick and dirty AHK scripts)
+; AHK: `Alt + c`; Get AutoHotkey `MouseMove X Y` positions to the clipboard (very useful for creating quick and dirty AHK scripts)
 !c::
 {
   MouseGetPos(&xpos, &ypos)
   A_Clipboard := "MouseMove(" xpos ",  " ypos ")"
 }
 
-; AHK: `PrintScreen`, Snipping tool
+; AHK: `PrintScreen`; Snipping tool
 $PrintScreen::
 {
   Run("C:\Windows\system32\SnippingTool.exe")
@@ -77,7 +77,7 @@ GetDrawingCoords()
   Return c
 }
 
-; AHK: `Alt + u`, Draw a line between the next two mouse clicks (U for Underline!)
+; AHK: `Alt + u`; Draw a line between the next two mouse clicks (U for Underline!)
 !u::
 {
   c := GetDrawingCoords()
@@ -85,7 +85,7 @@ GetDrawingCoords()
   MouseClickDrag("L", c[3], c[4], c[1], c[2])
 }
 
-; AHK: `Alt + b`, Draw a box between the next two mouse clicks (B for Box!!)
+; AHK: `Alt + b`; Draw a box between the next two mouse clicks (B for Box!!)
 !b::
 {
   ;; Although this doesn't matter which

@@ -9,6 +9,8 @@
 # haven't documented what it can do (yet)! This is some placeholder text in the
 # meantime.
 
+# I might put this in a seperate repo at some point as it is quite useful.
+
 ## License:
 
 # Copyright (c) 2024 Julian Orchard <hello@julianorchard.co.uk>
@@ -43,6 +45,7 @@ CONFIGS = [
         "target": "autohotkey/",
         "match-type": "simple",
         "selector": "AHK:",
+        "delimeter": ";",
     },
     {
         "target": "scripts/",
@@ -184,7 +187,7 @@ def simple(config: dict) -> list:
                 line = print_without_comments(line)
                 # Get rid of the selector
                 keep = line.split(":")[1]
-                contents_list = keep.split(",")
+                contents_list = keep.split(config["delimeter"])
                 # Strip the line to make it tidier
                 contents_list = [c.strip() for c in contents_list]
                 content_and_metadata = {
