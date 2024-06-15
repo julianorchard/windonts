@@ -9,6 +9,8 @@
 # Reminder text from this Gist:
 # https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
 
+## License:
+
 ## Code:
 
 $validCommitTypes = @(
@@ -33,7 +35,7 @@ For ($i = 0; $i -le $validCommitTypes.length - 1; $i++) {
 
     # gapChars is for aligning the output:
     $gapChars = " " * (8 - $validCommitTypes[$i].Length)
-    
+
     Write-Host(" - '" + $validCommitTypes[$i] + "'" +
             $gapChars + $commitTypeDescriptions[$i])
 }
