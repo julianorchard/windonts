@@ -15,16 +15,24 @@ ws_move(key) {
 }
 
 ; General keys
+; GLZ: `Super+f`; Fullscreen
 #f::g("toggle-fullscreen")
+; GLZ: `Super+m`; Toggle minimized window
 #m::g("toggle-minimized")
+; GLZ: `Super+q`; Close window
 #q::g("close")
+; GLZ: `Super+Shift+e`; Close GlazeWM
 #+e::g("wm-exit")
+; GLZ: `Super+Shift+r`; Reload GlazeWM (including keymappings)
 #+r::g("wm-reload-config")
+; GLZ: `Super+Enter`; Execute the Windows Terminal
 #Enter::g("shell-exec wt")
+; GLZ: `Super+r`; Enter resize mode **(TODO: Make better!)**
 #r::g("wm-enable-binding-mode --name resize")
 
 
-; Modifier (numbered) keys
+; GLZ: `Super+[0-9]`; Switch to nth workspace
+; GLZ: `Super+Shift+[0-9]`; Move window to nth workspace
 Loop 9 {
     key := A_Index
     Hotkey("#" . key, ws_focus(key))
@@ -40,11 +48,11 @@ directions := [
 ]
 
 for item in directions {
-    ; Alt + direction
+    ; GLZ: `Alt+[hjkl\|Left+Down+Up+Right]`; Move focus directionally
     Hotkey("!" . item.vi, (*) => g("focus --direction " . item.dir))
     Hotkey("!" . item.arrow, (*) => g("focus --direction " . item.dir))
 
-    ; Alt + Shift + direction
+    ; GLZ: `Alt+Shift+[hjkl\|Left+Down+Up+Right]`; Move window directionally
     Hotkey("!+" . item.vi, (*) => g("move --direction " . item.dir))
     Hotkey("!+" . item.arrow, (*) => g("move --direction " . item.dir))
 }
