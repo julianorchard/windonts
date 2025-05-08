@@ -61,7 +61,7 @@ I have a number of fun and useful AutoHotkey settings (requires version v2.0).
 | `F8` | Insert a random "silly" email sign-off (I mostly keep both of these for nostalgia...) | [general.ahk](autohotkey/general.ahk)  |
 | `F9` | Insert a random LinkedIn style message | [general.ahk](autohotkey/general.ahk)  |
 | `F10` | Insert Lipsum text | [general.ahk](autohotkey/general.ahk)  |
-| `Alt+F12` | [general.ahk](autohotkey/general.ahk)  |
+| `Alt+F12` | Hide the taskbar entirely | [general.ahk](autohotkey/general.ahk)  |
 | `Alt+i` | Toggle screen refresher (to bypass lockscreen timeouts, etc.) | [general.ahk](autohotkey/general.ahk)  |
 
 <!--end ahk_mapping-->
