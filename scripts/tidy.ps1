@@ -1,5 +1,16 @@
 #!/usr/bin/env pwsh
 
+## Description:
+
+# For tidying files after they've been mauled by Windows Explorer
+# bulk renaming, e.g. "File (1).ext", ...
+
+# Originally written in Ruby for some reason.
+
+## License:
+
+# See /LICENSE file in the root of this repository.
+
 param(
     [switch]$Brackets,
     [switch]$Extensions,
