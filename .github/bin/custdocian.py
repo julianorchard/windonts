@@ -39,7 +39,7 @@ import os
 import re
 import sys
 
-DOC_FILE = ".github/README.md"
+DOC_FILE = "README.md"
 CONFIGS = [
     {
         "target": "autohotkey/",
