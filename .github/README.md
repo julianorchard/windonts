@@ -19,6 +19,10 @@ The command used to manage the bare repo:  ```cmd git --git-dir=%HOME%/.dotfiles
 
 Use this script to create a shortcut to the current folder you're in. I've found this especially useful for CMD navigation.
 
+### tidy.ps1
+
+For tidying files after they've been mauled by Windows Explorer bulk renaming, e.g. "File (1).ext", ...  Originally written in Ruby for some reason.
+
 ### cmdrc.bat
 
 This is a method of having a custom prompt in CMD. It's opened by AutoHotkey (see ahk/general.ahk for more information).
