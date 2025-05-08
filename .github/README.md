@@ -73,6 +73,20 @@ of time. This is the newest part of my configuration with the most
 updates.
 
 <!--begin glazewm_mapping-->
+| Keys | Description | File  |
+| --- | --- | ---  |
+| `Super+f` | Fullscreen | [keys.ahk](glazewm/keys.ahk)  |
+| `Super+m` | Toggle minimized window | [keys.ahk](glazewm/keys.ahk)  |
+| `Super+q` | Close window | [keys.ahk](glazewm/keys.ahk)  |
+| `Super+Shift+e` | Close GlazeWM | [keys.ahk](glazewm/keys.ahk)  |
+| `Super+Shift+r` | Reload GlazeWM (including keymappings) | [keys.ahk](glazewm/keys.ahk)  |
+| `Super+Enter` | Execute the Windows Terminal | [keys.ahk](glazewm/keys.ahk)  |
+| `Super+r` | Enter resize mode **(TODO | [keys.ahk](glazewm/keys.ahk)  |
+| `Super+[0-9]` | Switch to nth workspace | [keys.ahk](glazewm/keys.ahk)  |
+| `Super+Shift+[0-9]` | Move window to nth workspace | [keys.ahk](glazewm/keys.ahk)  |
+| `Alt+[hjkl\|Left+Down+Up+Right]` | Move focus directionally | [keys.ahk](glazewm/keys.ahk)  |
+| `Alt+Shift+[hjkl\|Left+Down+Up+Right]` | Move window directionally | [keys.ahk](glazewm/keys.ahk)  |
+
 <!--end glazewm_mapping-->
 
 ## License
