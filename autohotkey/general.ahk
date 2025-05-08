@@ -1,5 +1,9 @@
 #Requires AutoHotkey v2.0+
+#SingleInstance
 DetectHiddenWindows true
+
+; AHK: `CapsLock`; I usually switch `CapsLock` to `Ctrl`
+CapsLock::Ctrl
 
 ; Home Path
 global UserHome := "C:\Users\" A_UserName
@@ -32,9 +36,6 @@ $!Enter::
 
 ; AHK: `Win + Alt + Enter`; Run Git Bash (how many of these do we need??)
 #!Enter::Run("C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Git\Git Bash")
-
-; AHK: `Alt + F`; Run Firefox
-!f::Run("C:\Program Files\Mozilla Firefox\firefox.exe")
 
 ; AHK: `Alt + c`; Get AutoHotkey `MouseMove X Y` positions to the clipboard (very useful for creating quick and dirty AHK scripts)
 !c::
@@ -123,7 +124,7 @@ GetDrawingCoords()
 
 ; Line Break / <hr>'s - - - - - - - - - - - - - - -
 
-; = Insert  -+-  -+-  -+-  -+-  -+-  -+-  -+-  -+-
+; AHK: `Alt+=`; Insert  `-+-  -+-  -+-  -+-  -+-  -+-  -+-  -+-`
 !=::
 {
   Loop(8)
@@ -132,7 +133,7 @@ GetDrawingCoords()
   }
 }
 
-; ~ Insert -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-
+; AHK: `Alt+~`; Insert  `-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-`
 !#::
 {
   Loop(16)
@@ -142,17 +143,7 @@ GetDrawingCoords()
   Send("-")
 }
 
-; Indented non-markdown-ish "o - "
-!-::Send("{space}o{space}-{space}")
-
-; F5 Insert Timestamp
-!F5::Send(FormatTime(, "ddd d-MMM-yy hh:mm tt"))
-
-; F6 Insert Time
-!F6::Send(FormatTime(, "ddd d-MMM-yy hh:mm tt") " ~ JO : {enter}")
-
-; F7/F8: SignOff function inserts a random
-; Email signoff from an input file.
+; SignOff function inserts a random email signoff from an input file.
 RandomFromFile(file)
 {
   serious := []
@@ -166,31 +157,19 @@ RandomFromFile(file)
   Return serious[randomNumber]
 }
 
-; F7 Serious
+; AHK: `F7`; Insert a random "serious" email sign-off
 !F7::Send(RandomFromFile(A_ScriptDir "\res\serious.txt"))
-; F8 Silly
+
+; AHK: `F8`; Insert a random "silly" email sign-off (I mostly keep both of these for nostalgia...)
 !F8::Send(RandomFromFile(A_ScriptDir "\res\silly.txt") " regards, ")
 
-; F11 Select an email template to insert
-!F11::
-{
-  textToInsert := FileSelect(3, UserHome "\org\txt", "Insert Email Template")
-  if !(textToInsert = "")
-  {
-    Loop read, textToInsert
-    {
-      Send(A_LoopReadLine "{Enter}")
-    }
-  }
-}
-
-; F9 Insert a random, LinkedIn Style Message
+; AHK: `F9`; Insert a random LinkedIn style message
 !F9::Send(RandomFromFile(A_ScriptDir "res\linkedin.txt"))
 
-; Insert Lipsum Text
+; AHK: `F10`; Insert Lipsum text
 !F10::Send(FileRead(A_ScriptDir "res\lipsum.txt") "{backspace 2}")
 
-; Alt+F12 to hide the taskbar entirely
+; AHK: `Alt+F12`: Hide the taskbar entirely
 global taskbarStatus := false
 $!F12::
 {
@@ -221,60 +200,7 @@ FixTaskbarHide()
   }
 }
 
-;; Alt + e, Start + e improved
-KeyWaitAny(Options:="")
-{
-  ih := InputHook(Options)
-  if !InStr(Options, "V")
-  {
-    ih.VisibleNonText := false
-  }
-  ih.KeyOpt("{All}", "E")
-  ih.Start()
-  ih.Wait()
-  Return ih.EndKey
-}
-!e::
-{
-  ;; It would be nicer to be able to do this with
-  ;; an array or something; make it easier to add
-  ;; new items to both the Gui and also to the
-  ;; script part...
-
-  ;; GUI element
-  AltEGui := Gui()
-  AltEGui.Opt("-Caption")
-  AltEGui.MarginX := 100
-  AltEGui.MarginY := 30
-  AltEGui.SetFont("s12", "Segoe UI")
-  AltEGui.Add("Text", , "Alt+E locations you can open (bindings below):")
-  AltEGui.SetFont("s10", "Consolas")
-  AltEGui.Add("Text", , "- binding:    C   =     " UserHome)
-  AltEGui.Add("Text", , "- binding:    W   =     " UserHome "\Documents\Website\")
-  AltEGui.Add("Text", , "- binding:    J   =     J:\TSD\")
-  AltEGui.Add("Text", , "- binding:    P   =     P:\Marketing Images\")
-  AltEGui.Add("Text", , "- binding:    S   =     S:\")
-  AltEGui.Show
-
-  Switch KeyWaitAny()
-  {
-    case "c":
-      Run(UserHome "\")
-    case "w":
-      Run(UserHome "\Documents\Website")
-    case "j":
-      Run("J:\TSD\")
-    case "p":
-      Run("P:\")
-    case "s":
-      Run("S:\")
-    default:
-  }
-  AltEGui.Destroy
-}
-
-
-;; Alt + i : Toggle screen refresher
+; AHK: `Alt+i`; Toggle screen refresher (to bypass lockscreen timeouts, etc.)
 Refresher()
 {
   Send("{RAlt}")
@@ -293,68 +219,5 @@ global refresherStatus := false
   {
     TrayTip("Screen Refresher Off", "The screen refresher has been disabled.")
     SetTimer(Refresher, 0)
-  }
-}
-
-;; Start + Alt + a: Move items from last month
-;; into my '! Urgent" folder in Outlook 2007.
-!#a::
-{
-  ;; Pain. I upgraded from ahk 1.1 to 2.0 to access this
-  ;; feature, below, that wasn't even required.
-  ; twoWeeksAgo := DateAdd(A_Now, -14, "days")
-  ; MsgBox FormatTime(twoWeeksAgo, "yyyy-MM-dd")
-
-  ;; Sort the view by 'last month' and go back to
-  ;; focus on email list of items
-  send("+{tab}{enter}{tab 10}{down 8}{enter}{tab 2}")
-  sleep(1000)
-
-  ;; Move all items to '! Urgent' folder (alt+e, m to move)
-  send("^{a}")
-  send("!em{!}{enter}")
-
-  send("+{tab 14}")
-  sleep(1000)
-  send("{enter}{escape}")
-}
-
-!#s::
-{
-  WinGetClientPos(&x, &y, &w, &h, WinGetTitle("A"))
-  MsgBox("&" x ", &" y ", &" w ", &" h)
-  MouseMove(x, y, 99)
-  ; Run("C:\Windows\system32\SnippingTool.exe")
-  ; if not WinWait("Snipping Tool", , 5)
-  ; {
-  ;   MsgBox "Snipping tool timed out."
-  ; }
-  ; else
-  ; {
-  ;   Sleep(1000)
-  ;   Send("^n")
-  ;   Sleep(1000)
-  ;   x2 := Floor(w + x)
-  ;   y2 := Floor(h + y)
-  ;   ; MsgBox("x = " x " y = " y " x2 = " x2 " y2 = " y2)
-  ;   MouseMove(x, y, 60)
-  ;   Sleep(1000)
-  ;   Send("{LButton down}")
-  ;   Sleep(1000)
-  ;   MouseMove(x2, y2, 60)
-  ;   Sleep(1000)
-  ;   Send("{LButton up}")
-  ;   ; MouseClickDrag("L", x2, y2, x, y)
-  ; }
-}
-
-;; Right Click in Signal Desktop to
-;; react to message clicked
-~RButton::
-{
-  Sleep(200)
-  if WinActive("ahk_exe Signal.exe")
-  {
-    Send("{down 2}{enter}")
   }
 }
