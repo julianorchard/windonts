@@ -11,37 +11,37 @@ below:
 
 <!--begin scripts-->
 
-### ll.bat
-
-`dir` isn't it my muscle memory at all.
-
 ### commit.ps1
 
 Should be thought of as a temporary tool until used to doing it by default!  Reminder text from this Gist: https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
 
-### config.bat
+### shortcuts.bat
 
-The command used to manage the bare repo:  ```cmd git --git-dir=%HOME%/.dotfiles/ --work-tree=%HOME% ```  ... for use in the Windows CMD.
+Use this script to create a shortcut to the current folder you're in. I've found this especially useful for CMD navigation.
 
 ### refreshprompt.bat
 
 The main use case for this being whenever we change Git profiles. This isn't something I do as often as I used to.
 
-### drives.bat
+### config.bat
 
-Add shortcuts to available drives.
+The command used to manage the bare repo:  ```cmd git --git-dir=%HOME%/.dotfiles/ --work-tree=%HOME% ```  ... for use in the Windows CMD.
 
 ### tidy
 
 For tidying files after they've been mauled by Windows Explorer bulk renaming, e.g. "File (1).ext", ...  Disclaimer, this is the first and only Ruby I've ever written
 
+### ll.bat
+
+`dir` isn't it my muscle memory at all.
+
 ### cmdrc.bat
 
 This is a method of having a custom prompt in CMD. It's opened by AutoHotkey (see ahk/general.ahk for more information).
 
-### shortcuts.bat
+### drives.bat
 
-Use this script to create a shortcut to the current folder you're in. I've found this especially useful for CMD navigation.
+Add shortcuts to available drives.
 
 <!--end scripts-->
 
