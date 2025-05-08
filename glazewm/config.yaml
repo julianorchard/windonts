@@ -1,0 +1,113 @@
+---
+general:
+  startup_commands:
+    - shell-exec zebar
+    # TODO: I've not tested the relative path yet
+    - shell-exec ./keys.ahk
+  shutdown_commands:
+    - shell-exec taskkill /IM zebar.exe /F
+    # TODO: We should shut down the AHK script too!
+    # - Get-WmiObject win32_process -Filter "commandline like '%%keys.ahk""'" | ForEach-Object { $_.Terminate() }
+  config_reload_commands: [shell-exec ./keys.ahk]
+  focus_follows_cursor: true
+  toggle_workspace_on_refocus: false
+  cursor_jump:
+    enabled: true
+    trigger: monitor_focus
+  hide_method: cloak
+  show_all_in_taskbar: false
+gaps:
+  scale_with_dpi: true
+  inner_gap: 0px
+  outer_gap:
+    top: 40px
+    right: 0px
+    bottom: 0px
+    left: 0px
+window_effects:
+  focused_window:
+    border:
+      enabled: true
+      color: '#8dbcff'
+    hide_title_bar:
+      enabled: false
+    corner_style:
+      enabled: true
+      # Allowed values: 'square', 'rounded', 'small_rounded'
+      style: small_rounded
+    transparency:
+      enabled: false
+      opacity: 0.95
+  other_windows:
+    border:
+      enabled: true
+      color: '#a1a1a1'
+    hide_title_bar:
+      enabled: false
+    corner_style:
+      enabled: false
+      style: square
+    transparency:
+      enabled: false
+      opacity: 0%
+window_behavior:
+  # Allowed values: 'tiling', 'floating'
+  initial_state: tiling
+  state_defaults:
+    floating:
+      centered: true
+      shown_on_top: true
+    fullscreen:
+      maximized: false
+      shown_on_top: true
+workspaces:
+  - name: '1'
+    display_name: 一
+  - name: '2'
+    display_name: 二
+  - name: '3'
+    display_name: 三
+  - name: '4'
+    display_name: 四
+  - name: '5'
+    display_name: 五
+  - name: '6'
+    display_name: 六
+    bind_to_monitor: 2
+  - name: '7'
+    display_name: 七
+    bind_to_monitor: 2
+  - name: '8'
+    display_name: 八
+    bind_to_monitor: 2
+  - name: '9'
+    display_name: 九
+    bind_to_monitor: 2
+window_rules:
+  # TODO: Window rules
+  - commands: [ignore]
+    match:
+      # Ignores any Zebar windows
+      - window_process: {equals: zebar}
+      # Ignores picture-in-picture windows for browsers
+      - window_title: {regex: '[Pp]icture.in.[Pp]icture'}
+        window_class: {regex: Chrome_WidgetWin_1|MozillaDialogClass}
+
+# TODO: Although this is *called* by AHK (currently) it's nasty to
+#       have this as YAML when we have lovely, lovely AHK to use!!!
+#       Use that instead, here... if possible
+binding_modes:
+  # When enabled, the focused window can be resized via arrow keys or HJKL
+  - name: resize
+    keybindings:
+      - commands: [resize --width -2%]
+        bindings: [h, left]
+      - commands: [resize --width +2%]
+        bindings: [l, right]
+      - commands: [resize --height +2%]
+        bindings: [k, up]
+      - commands: [resize --height -2%]
+        bindings: [j, down]
+      # Press enter/escape to return to default keybindings
+      - commands: [wm-disable-binding-mode --name resize]
+        bindings: [escape, enter]
