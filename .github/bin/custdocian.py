@@ -48,6 +48,12 @@ CONFIGS = [
         "delimeter": ";",
     },
     {
+        "target": "glazewm/",
+        "match-type": "ididrewritethisingo",
+        "selector": "GLZ:",
+        "delimeter": ";",
+    },
+    {
         "target": "scripts/",
         "selector": "Description:",
         "match-type": "block",
@@ -250,6 +256,15 @@ def main():
             table = format_table(headings, contents)
             doc_content = insert_target_comment(
                 target_comment="ahk_mapping",
+                new_content=table,
+                doc_content=doc_content,
+            )
+        if config["match-type"] == "ididrewritethisingo":
+            contents = simple(config)
+            headings = ["Keys", "Description", "File"]
+            table = format_table(headings, contents)
+            doc_content = insert_target_comment(
+                target_comment="glazewm_mapping",
                 new_content=table,
                 doc_content=doc_content,
             )
