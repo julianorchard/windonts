@@ -169,7 +169,7 @@ RandomFromFile(file)
 ; AHK: `F10`; Insert Lipsum text
 !F10::Send(FileRead(A_ScriptDir "res\lipsum.txt") "{backspace 2}")
 
-; AHK: `Alt+F12`: Hide the taskbar entirely
+; AHK: `Alt+F12`; Hide the taskbar entirely
 global taskbarStatus := false
 $!F12::
 {
