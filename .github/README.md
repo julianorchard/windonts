@@ -66,6 +66,15 @@ I have a number of fun and useful AutoHotkey settings (requires version v2.0).
 
 <!--end ahk_mapping-->
 
+## Glaze WM
+
+I've recently started using Glaze when on Windows for a longer period
+of time. This is the newest part of my configuration with the most
+updates.
+
+<!--begin glazewm_mapping-->
+<!--end glazewm_mapping-->
+
 ## License
 
 [MIT](/LICENSE).

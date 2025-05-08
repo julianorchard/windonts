@@ -198,7 +198,7 @@ def simple(config: dict) -> list:
                 contents_list = [c.strip() for c in contents_list]
                 content_and_metadata = {
                     "filename": file,
-                    "filepath": (config["target"] + file).replace(".github/", ""),
+                    "filepath": config["target"] + file,
                     "content": contents_list,
                 }
                 contents.append(content_and_metadata)
