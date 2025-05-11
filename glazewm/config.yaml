@@ -1,14 +1,12 @@
 ---
 general:
   startup_commands:
-    - shell-exec zebar
     # TODO: I've not tested the relative path yet
-    - shell-exec ./keys.ahk
+    - shell-exec C:/windonts/glazewm/bin/keys.ahk
   shutdown_commands:
-    - shell-exec taskkill /IM zebar.exe /F
     # TODO: We should shut down the AHK script too!
     # - Get-WmiObject win32_process -Filter "commandline like '%%keys.ahk""'" | ForEach-Object { $_.Terminate() }
-  config_reload_commands: [shell-exec ./keys.ahk]
+  config_reload_commands: [shell-exec C:/windonts/glazewm/bin/keys.ahk]
   focus_follows_cursor: true
   toggle_workspace_on_refocus: false
   cursor_jump:
@@ -20,7 +18,7 @@ gaps:
   scale_with_dpi: true
   inner_gap: 0px
   outer_gap:
-    top: 40px
+    top: 0px # 40px if we're talkin' zebar
     right: 0px
     bottom: 0px
     left: 0px
