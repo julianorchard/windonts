@@ -1,9 +1,11 @@
 ---
 general:
   startup_commands:
+    # TODO: I've not tested the relative path yet
     - shell-exec C:/windonts/glazewm/bin/keys.ahk
   shutdown_commands:
-    - shell-exec powershell -Command "Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like '*keys.ahk*' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"
+    # TODO: We should shut down the AHK script too!
+    # - Get-WmiObject win32_process -Filter "commandline like '%%keys.ahk""'" | ForEach-Object { $_.Terminate() }
   config_reload_commands: [shell-exec C:/windonts/glazewm/bin/keys.ahk]
   focus_follows_cursor: true
   toggle_workspace_on_refocus: false

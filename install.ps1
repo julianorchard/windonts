@@ -11,33 +11,39 @@ Set-StrictMode -Version Latest
 
 Set-ExecutionPolicy bypass -scope process -force
 
-function Pkgs {
-    if (-not (get-command choco -erroraction silentlycontinue)) {
-	[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-	invoke-expression ((new-object system.net.webclient).downloadstring('https://community.chocolatey.org/install.ps1'))
+function Pkgs
+{
+    if (-not (get-command choco -erroraction silentlycontinue))
+    {
+        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+        invoke-expression ((new-object system.net.webclient).downloadstring('https://community.chocolatey.org/install.ps1'))
     }
 
-    if (-not (test-path "./packages.config")) {
-	write-error "No chocolatey packages.config file found in the current directory (check it's there!)"
+    if (-not (test-path "./packages.config"))
+    {
+        write-error "No chocolatey packages.config file found in the current directory (check it's there!)"
     }
 
     choco install -y packages.config
 }
 
-function Files {
-    function Move-ItemWrapper {
-	param(
-	    [string]$from,
-	    [string]$to,
-	    [string]$niceto
-	)
-	if ($niceto -ne $null) {
-	    write-host "Moving $from to $niceto"
-	}
-	else {
-	    write-host "Moving $from to $to"
-	}
-	copy-item $from $to
+function Files
+{
+    function Move-ItemWrapper
+    {
+        param(
+            [string]$from,
+            [string]$to,
+            [string]$niceto
+        )
+        if ($niceto -ne $null)
+        {
+            write-host "Moving $from to $niceto"
+        } else
+        {
+            write-host "Moving $from to $to"
+        }
+        copy-item $from $to
     }
 
     Move-ItemWrapper profile.ps1 $PROFILE "the powershell profile location"
@@ -45,10 +51,11 @@ function Files {
     Move-ItemWrapper startup.cmd "${env:APPDATA}\Microsoft\Windows\Start Menu\Programs\Startup" "the horrible startup dir"
 }
 
-if ($noChoco -eq $true) {
+if ($noChoco -eq $true)
+{
     Files
-}
-else {
+} else
+{
     Pkgs
     Files
 }
