@@ -61,35 +61,50 @@ window_behavior:
 workspaces:
   - name: '1'
     display_name: 一
+    bind_to_monitor: 0
   - name: '2'
     display_name: 二
+    bind_to_monitor: 0
   - name: '3'
     display_name: 三
+    bind_to_monitor: 0
   - name: '4'
     display_name: 四
+    bind_to_monitor: 0
   - name: '5'
     display_name: 五
+    bind_to_monitor: 0
   - name: '6'
     display_name: 六
-    bind_to_monitor: 2
+    bind_to_monitor: 1
   - name: '7'
     display_name: 七
-    bind_to_monitor: 2
+    bind_to_monitor: 1
   - name: '8'
     display_name: 八
-    bind_to_monitor: 2
+    bind_to_monitor: 1
   - name: '9'
     display_name: 九
-    bind_to_monitor: 2
+    bind_to_monitor: 1
 window_rules:
-  # TODO: Window rules
   - commands: [ignore]
     match:
+      - window_process: {equals: Remote Desktop Connection}
       # Ignores any Zebar windows
       - window_process: {equals: zebar}
       # Ignores picture-in-picture windows for browsers
       - window_title: {regex: '[Pp]icture.in.[Pp]icture'}
         window_class: {regex: Chrome_WidgetWin_1|MozillaDialogClass}
+ # NOTE: I don't use this but keeping it just in case
+ #- commands: ["move --workspace 1"]
+ #  match:
+ #    - window_process: { regex: "WindowsTerminal" }
+  - commands: ["move --workspace 2"]
+    match:
+      - window_process: { regex: "msedge|firefox|chrome" }
+  - commands: ["move --workspace 6"]
+    match:
+      - window_process: { regex: "Slack" }
 
 # TODO: Although this is *called* by AHK (currently) it's nasty to
 #       have this as YAML when we have lovely, lovely AHK to use!!!

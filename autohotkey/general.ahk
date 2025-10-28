@@ -221,3 +221,27 @@ global refresherStatus := false
     SetTimer(Refresher, 0)
   }
 }
+
+::smoke::🚬
+
+
+#!v::
+{
+    store := %A_Clipboard%
+
+    newText := "
+    (
+    Chat... 🚬🚬🚬🚬🚬🚬🚬
+    ``````
+    %store%
+
+    ``````
+    )"
+
+    MsgBox newText
+
+    clipboard := newText
+    Send "^v"
+    Sleep 100
+    clipboard := store
+}

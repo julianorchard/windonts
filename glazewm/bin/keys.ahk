@@ -24,7 +24,7 @@ ws_move(key) {
 ; GLZ: `Super+Shift+e`; Close GlazeWM
 #+e::g("wm-exit")
 ; GLZ: `Super+Shift+r`; Reload GlazeWM (including keymappings)
-#+r::g("wm-reload-config")
+#+r::Run "..\..\startup.cmd"
 ; GLZ: `Super+Enter`; Execute the Windows Terminal
 #Enter::g("shell-exec wt")
 ; GLZ: `Super+r`; Enter resize mode **(TODO: Make better!)**
