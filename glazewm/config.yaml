@@ -1,14 +1,10 @@
 ---
 general:
   startup_commands:
-    - shell-exec zebar
-    # TODO: I've not tested the relative path yet
-    - shell-exec ./keys.ahk
+    - shell-exec C:/windonts/glazewm/bin/keys.ahk
   shutdown_commands:
-    - shell-exec taskkill /IM zebar.exe /F
-    # TODO: We should shut down the AHK script too!
-    # - Get-WmiObject win32_process -Filter "commandline like '%%keys.ahk""'" | ForEach-Object { $_.Terminate() }
-  config_reload_commands: [shell-exec ./keys.ahk]
+    - shell-exec powershell -Command "Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -like '*keys.ahk*' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"
+  config_reload_commands: [shell-exec C:/windonts/glazewm/bin/keys.ahk]
   focus_follows_cursor: true
   toggle_workspace_on_refocus: false
   cursor_jump:
@@ -20,7 +16,7 @@ gaps:
   scale_with_dpi: true
   inner_gap: 0px
   outer_gap:
-    top: 40px
+    top: 0px # 40px if we're talkin' zebar
     right: 0px
     bottom: 0px
     left: 0px
@@ -63,35 +59,50 @@ window_behavior:
 workspaces:
   - name: '1'
     display_name: 一
+    bind_to_monitor: 0
   - name: '2'
     display_name: 二
+    bind_to_monitor: 0
   - name: '3'
     display_name: 三
+    bind_to_monitor: 0
   - name: '4'
     display_name: 四
+    bind_to_monitor: 0
   - name: '5'
     display_name: 五
+    bind_to_monitor: 0
   - name: '6'
     display_name: 六
-    bind_to_monitor: 2
+    bind_to_monitor: 1
   - name: '7'
     display_name: 七
-    bind_to_monitor: 2
+    bind_to_monitor: 1
   - name: '8'
     display_name: 八
-    bind_to_monitor: 2
+    bind_to_monitor: 1
   - name: '9'
     display_name: 九
-    bind_to_monitor: 2
+    bind_to_monitor: 1
 window_rules:
-  # TODO: Window rules
   - commands: [ignore]
     match:
+      - window_process: {equals: Remote Desktop Connection}
       # Ignores any Zebar windows
       - window_process: {equals: zebar}
       # Ignores picture-in-picture windows for browsers
       - window_title: {regex: '[Pp]icture.in.[Pp]icture'}
         window_class: {regex: Chrome_WidgetWin_1|MozillaDialogClass}
+ # NOTE: I don't use this but keeping it just in case
+ #- commands: ["move --workspace 1"]
+ #  match:
+ #    - window_process: { regex: "WindowsTerminal" }
+  - commands: ["move --workspace 2"]
+    match:
+      - window_process: { regex: "msedge|firefox|chrome" }
+  - commands: ["move --workspace 6"]
+    match:
+      - window_process: { regex: "Slack" }
 
 # TODO: Although this is *called* by AHK (currently) it's nasty to
 #       have this as YAML when we have lovely, lovely AHK to use!!!

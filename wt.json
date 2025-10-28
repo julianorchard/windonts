@@ -1,0 +1,121 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": 
+    [
+        {
+            "command": "paste",
+            "id": "User.paste"
+        },
+        {
+            "command": "find",
+            "id": "User.find"
+        }
+    ],
+    "copyFormatting": "none",
+    "copyOnSelect": true,
+    "defaultProfile": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+    "keybindings": 
+    [
+        {
+            "id": null,
+            "keys": "enter"
+        },
+        {
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+insert"
+        },
+        {
+            "id": null,
+            "keys": "alt+enter"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+shift+m"
+        },
+        {
+            "id": null,
+            "keys": "shift+insert"
+        },
+        {
+            "id": null,
+            "keys": "f11"
+        },
+        {
+            "id": null,
+            "keys": "alt+shift+minus"
+        },
+        {
+            "id": null,
+            "keys": "alt+shift+plus"
+        },
+        {
+            "id": null,
+            "keys": "alt+f4"
+        }
+    ],
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles": 
+    {
+        "defaults": 
+        {
+            "colorScheme": "vague",
+            "font": 
+            {
+                "face": "ComicShannsMono Nerd Font Mono"
+            }
+        },
+        "list": 
+        [
+            {
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "elevate": true,
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell"
+            },
+            {
+                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+                "hidden": false,
+                "name": "Ubuntu",
+                "source": "Windows.Terminal.Wsl"
+            }
+        ]
+    },
+    "schemes": 
+    [
+        {
+            "background": "#141415",
+            "black": "#252530",
+            "blue": "#9BB4BC",
+            "brightBlack": "#252530",
+            "brightBlue": "#9BB4BC",
+            "brightCyan": "#AEAED1",
+            "brightGreen": "#6E94B2",
+            "brightPurple": "#BB9DBD",
+            "brightRed": "#DF6882",
+            "brightWhite": "#CDCDCD",
+            "brightYellow": "#F3BE7C",
+            "cursorColor": "#CDCDCD",
+            "cyan": "#AEAED1",
+            "foreground": "#CDCDCD",
+            "green": "#6E94B2",
+            "name": "vague",
+            "purple": "#BB9DBD",
+            "red": "#DF6882",
+            "selectionBackground": "#252530",
+            "white": "#CDCDCD",
+            "yellow": "#F3BE7C"
+        }
+    ],
+    "themes": []
+}
