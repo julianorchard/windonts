@@ -15,13 +15,17 @@ below:
 
 The command used to manage the bare repo:  ```cmd git --git-dir=%HOME%/.dotfiles/ --work-tree=%HOME% ```  ... for use in the Windows CMD.
 
-### shortcuts.bat
+### drives.bat
 
-Use this script to create a shortcut to the current folder you're in. I've found this especially useful for CMD navigation.
+Add shortcuts to available drives.
 
 ### tidy.ps1
 
 For tidying files after they've been mauled by Windows Explorer bulk renaming, e.g. "File (1).ext", ...  Originally written in Ruby for some reason.
+
+### shortcuts.bat
+
+Use this script to create a shortcut to the current folder you're in. I've found this especially useful for CMD navigation.
 
 ### cmdrc.bat
 
@@ -30,10 +34,6 @@ This is a method of having a custom prompt in CMD. It's opened by AutoHotkey (se
 ### ll.bat
 
 `dir` isn't it my muscle memory at all.
-
-### drives.bat
-
-Add shortcuts to available drives.
 
 <!--end scripts-->
 
